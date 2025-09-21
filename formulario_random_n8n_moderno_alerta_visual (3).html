@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<title>Gerador de Número Aleatório</title>
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #1E90FF, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 350px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #1E90FF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;  
+    }
+
+    button:hover {
+      background-color: #1E90FF;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  
+.erro {
+  color: red;
+  margin-top: 4px;
+  font-size: 0.97em;
+}
+.input-erro {
+  border: 2px solid red !important;
+  animation: shake 0.18s 2;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(-6px); }
+  60% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<img alt="Logo do Gerador" src="   onfly-logo-removebg-preview.png" style="display: block; margin: 0 auto 20px; max-width: 120px;"/>
+<h2>Gerador de Número Aleatório</h2>
+<form id="randomForm">
+<label for="min">Mínimo:</label>
+<input id="min" name="min" required="" type="number"/>
+<label for="max">Máximo:</label>
+<input id="max" name="max" required="" type="number"/><div class="erro" id="mensagem-erro"></div>
+<button type="submit">Gerar Número</button>
+</form>
+<div id="result"></div>
+</div>
+
+<script>
+
+document.getElementById('randomForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const min = parseInt(document.getElementById('min').value, 10);
+      const max = parseInt(document.getElementById('max').value, 10);
+
+      fetch('http://localhost:5678/webhook-test/Random-numero', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ min, max })
+      })
+      .then(response => response.text())
+      
+.then(data => {
+  document.getElementById('result').innerHTML = `
+    <span style="
+      display: inline-block;
+      background: #e8ffe8;
+      color: #1a4d1a;
+      font-size: 1.3em;
+      font-weight: bold;
+      border-radius: 10px;
+      padding: 14px 28px;
+      box-shadow: 0 2px 8px #0001;
+    ">
+      Número gerado: ${data.replace(/[^0-9-]+/g, '')}
+    </span>
+  `;
+})
+
+      .catch(error => {
+        document.getElementById('result').textContent = 'Erro: ' + error;
+      });
+    });
+  
+function limparErros() {
+  document.getElementById('min').classList.remove('input-erro');
+  document.getElementById('max').classList.remove('input-erro');
+  document.getElementById('mensagem-erro').textContent = '';
+}
+
+function mostrarErro(msg, campo) {
+  document.getElementById('mensagem-erro').textContent = msg;
+  if (campo) {
+    campo.classList.add('input-erro');
+    setTimeout(() => campo.classList.remove('input-erro'), 400);
+  }
+}
+
+function gerarNumero() {
+  limparErros();
+  const minInput = document.getElementById('min');
+  const maxInput = document.getElementById('max');
+  const min = parseInt(minInput.value, 10);
+  const max = parseInt(maxInput.value, 10);
+
+  if (isNaN(min) || isNaN(max)) {
+    mostrarErro('Preencha ambos os campos com números válidos.', isNaN(min) ? minInput : maxInput);
+    return;
+  }
+  if (min > max) {
+    mostrarErro('O valor mínimo não pode ser maior que o máximo.', minInput);
+    return;
+  }
+  if (min === max) {
+    mostrarErro('O mínimo e o máximo não podem ser iguais.', maxInput);
+    return;
+  }
+
+  const numeroAleatorio = Math.floor(Math.random() * (max - min + 1)) + min;
+  alert('Número gerado: ' + numeroAleatorio);
+}
+
+document.getElementById('min').addEventListener('input', function() {
+  limparErros();
+  const min = parseInt(this.value, 10);
+  const maxInput = document.getElementById('max');
+  if (!isNaN(min)) {
+    maxInput.min = min;
+    if (parseInt(maxInput.value, 10) < min) {
+      maxInput.value = min;
+    }
+  } else {
+    maxInput.min = '';
+  }
+});
+
+document.getElementById('max').addEventListener('input', function() {
+  limparErros();
+  const min = parseInt(document.getElementById('min').value, 10);
+  const max = parseInt(this.value, 10);
+  if (!isNaN(min) && !isNaN(max)) {
+    if (min > max) {
+      mostrarErro('O valor mínimo não pode ser maior que o máximo.', document.getElementById('min'));
+    } else if (min === max) {
+      mostrarErro('O mínimo e o máximo não podem ser iguais.', this);
+    }
+  }
+});
+</script></body>
+</html>
