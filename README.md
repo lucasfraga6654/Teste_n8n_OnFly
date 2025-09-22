@@ -1,6 +1,4 @@
 ## Passo a passo para rodar o projeto
-
-
 1. **Instale o Docker Desktop:**
 	- Baixe e instale o Docker Desktop para Windows ou Mac a partir de: https://www.docker.com/products/docker-desktop
 	- Para Linux, siga as instruções oficiais: https://docs.docker.com/engine/install/
@@ -103,8 +101,46 @@
 
 
 
+## Estrutura de Pastas do Projeto
 
-Instalação
+```
+TesteN8n_OnFly/
+├── docker-compose.yml         # Arquivo de configuração do Docker Compose para subir o ambiente n8n
+├── Dokerfile                  # Dockerfile para build customizado (se necessário)
+├── Gerador.html               # Página HTML auxiliar (ex: geração de dados)
+├── Imagens/                   # Imagens usadas no README ou documentação
+├── n8n-nodes-random/          # Pacote do node custom
+│   │   
+│   │   
+│   ├── gulpfile.js            # Script para copiar ícones após o build
+│   ├── nodes/                 # (pasta reservada, pode estar vazia)
+│   │ 
+│   ├── package.json           # Configurações do projeto e scripts npm
+│   ├── src/                   # Código-fonte do node custom
+│   │   ├── index.ts           # Ponto de entrada do pacote custom
+│   │   └── nodes/Random/      # Implementação do node custom e ícones SVG/PNG
+│   │     ├── Random.node.ts # Código principal do node custom
+│   │       ├── logo_onfly.svg # Ícone SVG do node custom
+│   │       └── random.svg     # Outro ícone SVG (exemplo)
+│   └── tsconfig.json          # Configuração do TypeScript
+├── Randow.json.json/          # (pasta vazia ou para testes)
+├── Randow_workflow.json       # Exemplo de workflow para importar no n8n
+├── README.md                  # Documentação do projeto
+└── ...                        # Outros arquivos auxiliares
+```
 
-Siga o guia de instalação na documentação de nodes da comunidade n8n.
+### Descrição dos principais arquivos/pastas
+- **docker-compose.yml**: Sobe o ambiente n8n com Docker.
+- **Dokerfile**: (Opcional) Build customizado de container.
+- **Imagens/**: Imagens usadas na documentação.
+- **n8n-nodes-random/**: Todo o código do seu node custom.
+	- **src/**: Código-fonte TypeScript do node custom.
+	- **dist/**: Código compilado e ícones prontos para uso pelo n8n.
+	- **gulpfile.js**: Script para copiar ícones após build.
+	- **package.json**: Configurações, dependências e scripts npm.
+	- **tsconfig.json**: Configuração do TypeScript.
+- **Randow_workflow.json**: Exemplo de workflow para importar no n8n.
+- **README.md**: Documentação e instruções do projeto.
+
+
 
