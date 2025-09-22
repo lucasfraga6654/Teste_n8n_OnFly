@@ -1,5 +1,6 @@
 
 import type { IExecuteFunctions } from 'n8n-workflow';
+
 import {
 INodeExecutionData,
 INodeType,
@@ -8,11 +9,12 @@ INodeTypeDescription,
 import axios from 'axios';
 
 
+
 export class Random implements INodeType {
 description: INodeTypeDescription = {
 displayName: 'Random',
 name: 'random',
-icon: 'file:random.svg',
+icon: 'file:logo_onfly.svg',
 group: ['transform'],
 version: 1,
 description: 'Generate true random numbers using random.org',

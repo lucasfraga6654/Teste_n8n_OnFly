@@ -4,7 +4,7 @@
   "description": "Custom node for generating true random numbers using Random.org",
   "main": "nodes/Random/Random.node.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && gulp copyIcons"
   },
   "author": "Lucas Fraga",
   "license": "MIT",
@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.5.2",
+    "gulp": "^5.0.1",
     "typescript": "^5.9.2"
   }
 }
