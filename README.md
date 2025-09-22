@@ -85,8 +85,8 @@
 
 ![workflow 1](imagens/passo_4_workflow.png)
 
-Perfeito !!!
-
+- Faça questão que a função "Share" está ativada, o botão do tipo Slide deve estar verde no canto superior direito ao lado esquerdo da palavra "Share"
+![workflow 1](imagens/passo_5_workflow.png)
 11. **Abra a interface e a utilize**
 
 - Dentro do projeto a um arquivo html chamado "Gerador.html" abra-o.
@@ -102,13 +102,6 @@ Perfeito !!!
 ![workflow 1](imagens/Passo_3.png)
 
 
-
-
-[Instalação](#instalacao)
-[Operações](#operacoes)
-[Compatibilidade](#compatibilidade)
-[Uso](#uso)  <!-- apague se não usar esta seção -->
-[Recursos](#recursos)
 
 
 Instalação
