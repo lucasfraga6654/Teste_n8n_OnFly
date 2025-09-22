@@ -109,7 +109,7 @@ document.getElementById('randomForm').addEventListener('submit', function(e) {
       const min = parseInt(document.getElementById('min').value, 10);
       const max = parseInt(document.getElementById('max').value, 10);
 
-      fetch('http://localhost:5678/webhook-test/Random-numero', {
+      fetch('http://localhost:5678/webhook/Random-numero', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
