@@ -18,27 +18,27 @@
 
 
 
-1. **Clone o repositório:**
+4. **Clone o repositório:**
 	```sh
 	git clone https://github.com/lucasfraga6654Teste_n8n_OnFly.git
 
 	cd n8n-nodes-random
 	```
 
-2. **Instale as dependências:**
+5. **Instale as dependências:**
 	```sh
     npm install -g typescript
 	npm install -g n8n
 	```
 
-3. **Compile o projeto e suba o Docker :**
+6. **Compile o projeto e suba o Docker :**
 	```sh
     docker-compose up -d
 
 	npm run build
 	```
 
-4. **Configure o n8n para usar o node custom:**
+7. **Configure o n8n para usar o node custom:**
 	- Adicione a variável de ambiente no seu n8n principal:
 	  ```
 	  N8N_CUSTOM_EXTENSIONS=Caminho\absoluto\para\n8n-nodes-random\dist
@@ -48,7 +48,7 @@
 	  N8N_CUSTOM_EXTENSIONS=C:\Users\seu-usuario\caminho\para\n8n-nodes-random\dist
 	  ```
 
-5. **Reinicie o n8n e a build:**
+8. **Reinicie o n8n e a build:**
 	- Se estiver usando Docker Compose:
 	  ```sh
 	  docker-compose restart n8n
@@ -57,17 +57,52 @@
 	  ```
 	
 
-6. **Acesse o n8n e faça o login.**
+9. **Acesse o n8n.**
 
 	  ```sh
 	 http://localhost:5678
 	  ```
-Pronto! Agora você pode usar o node custom no seu fluxo n8n.
-Este é um node da comunidade n8n. Ele permite que você use o nome do app/serviço em seus fluxos de trabalho n8n.
 
-O nome do app/serviço deve ser uma ou duas frases descrevendo o serviço que este node integra.
+10. **Faça o login e importe o workflow**
 
-O n8n é uma plataforma de automação de fluxos de trabalho com licença fair-code.
+- Faça o login
+![login n8n](imagens/tela_login.png)
+
+
+ - Importe o workflow 
+![workflow 1](imagens/passo_1_workflow.png)
+
+  - No canto superior direito clique no botão vermelho "Create Workflow"
+
+![workflow 1](imagens/passo_2_workflow.png)
+
+ - No canto superior direito clique no botão de Três pontos, 
+ após isso clique em "Import from file"
+
+![workflow 1](imagens/passo_3_workflow.png)
+
+- Dentrodo da pasta Principal do projeto (TESTEN8N_ONFLY) você encontrará o arquivo "Randow_workflow.json" abra-o dentro do N8n.
+
+![workflow 1](imagens/passo_4_workflow.png)
+
+Perfeito !!!
+
+11. **Abra a interface e a utilize**
+
+- Dentro do projeto a um arquivo html chamado "Gerador.html" abra-o.
+
+![workflow 1](imagens/Passo_1.png)
+
+- Digite os números nos campos 
+
+![workflow 1](imagens/Passo_2.png)
+
+- Clique no butão "Gerar Número"
+
+![workflow 1](imagens/Passo_3.png)
+
+
+
 
 [Instalação](#instalacao)
 [Operações](#operacoes)
@@ -77,22 +112,6 @@ O n8n é uma plataforma de automação de fluxos de trabalho com licença fair-c
 
 
 Instalação
+
 Siga o guia de instalação na documentação de nodes da comunidade n8n.
 
-Operações
-
-
-Credenciais
-Se os usuários precisarem autenticar com o app/serviço, forneça detalhes aqui. Inclua pré-requisitos (como cadastro no serviço), métodos de autenticação disponíveis e como configurá-los.
-
-Compatibilidade
-Informe a versão mínima do n8n, bem como as versões testadas. Você também pode incluir problemas conhecidos de incompatibilidade.
-
-Uso
-Esta seção é opcional. Use para ajudar usuários com aspectos difíceis ou confusos do node.
-
-Se você espera novos usuários, pode linkar para a documentação "Experimente" do n8n para ajudá-los a começar.
-
-Recursos
-Documentação de nodes da comunidade n8n
-Link para a documentação do app/serviço.
