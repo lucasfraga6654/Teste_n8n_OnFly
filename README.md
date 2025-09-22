@@ -66,40 +66,40 @@
 10. **Faça o login e importe o workflow**
 
 - Faça o login
-![login n8n](imagens/tela_login.png)
+![login n8n](Imagens/tela_login.png)
 
 
  - Importe o workflow 
-![workflow 1](imagens/passo_1_workflow.png)
+![workflow 1](Imagens/passo_1_workflow.png)
 
   - No canto superior direito clique no botão vermelho "Create Workflow"
 
-![workflow 1](imagens/passo_2_workflow.png)
+![workflow 1](Imagens/passo_2_workflow.png)
 
  - No canto superior direito clique no botão de Três pontos, 
  após isso clique em "Import from file"
 
-![workflow 1](imagens/passo_3_workflow.png)
+![workflow 1](Imagens/passo_3_workflow.png)
 
 - Dentrodo da pasta Principal do projeto (TESTEN8N_ONFLY) você encontrará o arquivo "Randow_workflow.json" abra-o dentro do N8n.
 
-![workflow 1](imagens/passo_4_workflow.png)
+![workflow 1](Imagens/passo_4_workflow.png)
 
 - Faça questão que a função "Share" está ativada, o botão do tipo Slide deve estar verde no canto superior direito ao lado esquerdo da palavra "Share"
-![workflow 1](imagens/passo_5_workflow.png)
+![workflow 1](Imagens/passo_5_workflow.png)
 11. **Abra a interface e a utilize**
 
 - Dentro do projeto a um arquivo html chamado "Gerador.html" abra-o.
 
-![workflow 1](imagens/Passo_1.png)
+![workflow 1](Imagens/Passo_1.png)
 
 - Digite os números nos campos 
 
-![workflow 1](imagens/Passo_2.png)
+![workflow 1](Imagens/Passo_2.png)
 
 - Clique no butão "Gerar Número"
 
-![workflow 1](imagens/Passo_3.png)
+![workflow 1](Imagens/Passo_3.png)
 
 
 
