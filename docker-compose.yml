@@ -2,7 +2,8 @@ version: "3.9"
 
 services:
   n8n:
-    image: n8nio/n8n:latest
+    build: 
+      context: .
     restart: unless-stopped   
     ports:
       - "5678:5678"
@@ -16,7 +17,6 @@ services:
       - N8N_ENCRYPTION_KEY=someSecretKey
       - N8N_CUSTOM_EXTENSIONS=/home/node/.n8n/custom
     volumes:
-      - ./n8n-nodes-random:/home/node/.n8n/custom/n8n-nodes-random
       - n8n_data:/home/node/.n8n
 
   postgres:

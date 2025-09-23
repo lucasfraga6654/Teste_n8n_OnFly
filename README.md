@@ -1,3 +1,13 @@
+## Tecnologias Usadas
+
+- **n8n**: Plataforma de automação de workflows.
+- **Node.js**: Ambiente de execução JavaScript para backend.
+- **TypeScript**: Superset do JavaScript que adiciona tipagem estática.
+- **Docker & Docker Compose**: Containerização e orquestração do ambiente.
+- **PostgreSQL**: Banco de dados utilizado pelo n8n.
+- **Gulp**: Automatização de tarefas (cópia de ícones).
+- **HTML**: Interface auxiliar para geração de dados.
+
 ## Passo a passo para rodar o projeto
 1. **Instale o Docker Desktop:**
 	- Baixe e instale o Docker Desktop para Windows ou Mac a partir de: https://www.docker.com/products/docker-desktop
@@ -20,7 +30,6 @@
 	```sh
 	git clone https://github.com/lucasfraga6654Teste_n8n_OnFly.git
 
-	cd n8n-nodes-random
 	```
 
 5. **Instale as dependências:**
@@ -30,10 +39,9 @@
 	```
 
 6. **Compile o projeto e suba o Docker :**
+   - Você deve estar dentro da TesteN8n_Onfly
 	```sh
-    docker-compose up -d
-
-	npm run build
+   docker-compose up -d --build
 	```
 
 7. **Configure o n8n para usar o node custom:**
@@ -46,58 +54,70 @@
 	  N8N_CUSTOM_EXTENSIONS=C:\Users\seu-usuario\caminho\para\n8n-nodes-random\dist
 	  ```
 
-8. **Reinicie o n8n e a build:**
-	- Se estiver usando Docker Compose:
-	  ```sh
-	  docker-compose restart n8n
 
-	  npm run build
-	  ```
 	
 
-9. **Acesse o n8n.**
 
-	  ```sh
-	 http://localhost:5678
-	  ```
+8. **Acesse o n8n:**
+
+	[http://localhost:5678](http://localhost:5678)
 
 10. **Faça o login e importe o workflow**
 
-- Faça o login
-![login n8n](Imagens/tela_login.png)
 
 
- - Importe o workflow 
-![workflow 1](Imagens/passo_1_workflow.png)
 
-  - No canto superior direito clique no botão vermelho "Create Workflow"
+<div align="center">
+	<img src="Imagens/tela_login.png" alt="login n8n" />
+</div>
 
-![workflow 1](Imagens/passo_2_workflow.png)
+- No canto superior direito clique no botão vermelho "Create Workflow"
 
- - No canto superior direito clique no botão de Três pontos, 
- após isso clique em "Import from file"
+<div align="center">
+	<img src="Imagens/passo_1_workflow.png" alt="workflow 1" />
+</div>
 
-![workflow 1](Imagens/passo_3_workflow.png)
+- No canto superior direito clique no botão de Três pontos, após isso clique em "Import from file"
 
-- Dentrodo da pasta Principal do projeto (TESTEN8N_ONFLY) você encontrará o arquivo "Randow_workflow.json" abra-o dentro do N8n.
+<div align="center">
+	<img src="Imagens/passo_2_workflow.png" alt="workflow 2" />
+</div>
+- Dentro da pasta Principal do projeto (TESTEN8N_ONFLY) você encontrará o arquivo "Randow_workflow.json" abra-o dentro do N8n.
 
-![workflow 1](Imagens/passo_4_workflow.png)
+<div align="center">
+	<img src="Imagens/passo_3_workflow.png" alt="workflow 3" />
+</div>
 
 - Faça questão que a função "Share" está ativada, o botão do tipo Slide deve estar verde no canto superior direito ao lado esquerdo da palavra "Share"
-![workflow 1](Imagens/passo_5_workflow.png)
+
+<div align="center">
+	<img src="Imagens/passo_5_workflow.png" alt="workflow 4" />
+</div>
+
 11. **Abra a interface e a utilize**
 
-- Dentro do projeto a um arquivo html chamado "Gerador.html" abra-o.
+- Dentro do projeto há um arquivo html chamado "Gerador.html". Abra-o.
 
-![workflow 1](Imagens/Passo_1.png)
+<div align="center">
+	<img src="Imagens/Passo_1.png" alt="workflow 5" />
+</div>
 
-- Digite os números nos campos 
+- Digite os números nos campos
 
-![workflow 1](Imagens/Passo_2.png)
+<div align="center">
+	<img src="Imagens/Passo_2.png" alt="workflow 6" />
+</div>
 
-- Clique no butão "Gerar Número"
+- Clique no botão "Gerar Número"
 
-![workflow 1](Imagens/Passo_3.png)
+<div align="center">
+	<img src="Imagens/Passo_3.png" alt="workflow 7" />
+</div>
+
+
+
+
+
 
 
 
@@ -117,21 +137,21 @@ TesteN8n_OnFly/
 │   │ 
 │   ├── package.json           # Configurações do projeto e scripts npm
 │   ├── src/                   # Código-fonte do node custom
-│   │   ├── index.ts           # Ponto de entrada do pacote custom
+│   │   └── index.ts           # Ponto de entrada do pacote custom
 │   │   └── nodes/Random/      # Implementação do node custom e ícones SVG/PNG
-│   │     ├── Random.node.ts # Código principal do node custom
-│   │       ├── logo_onfly.svg # Ícone SVG do node custom
-│   │       └── random.svg     # Outro ícone SVG (exemplo)
+│   │       ├── Random.node.ts # Código principal do node custom
+│   │       └── logo_onfly.svg # Ícone SVG do node custom
+│   │       
 │   └── tsconfig.json          # Configuração do TypeScript
 ├── Randow.json.json/          # (pasta vazia ou para testes)
-├── Randow_workflow.json       # Exemplo de workflow para importar no n8n
+├── Randow_workflow.json       # Workflow para importar no n8n
 ├── README.md                  # Documentação do projeto
 └── ...                        # Outros arquivos auxiliares
 ```
 
 ### Descrição dos principais arquivos/pastas
 - **docker-compose.yml**: Sobe o ambiente n8n com Docker.
-- **Dokerfile**: (Opcional) Build customizado de container.
+- **Dockerfile**: (Opcional) Build customizado de container.
 - **Imagens/**: Imagens usadas na documentação.
 - **n8n-nodes-random/**: Todo o código do seu node custom.
 	- **src/**: Código-fonte TypeScript do node custom.
